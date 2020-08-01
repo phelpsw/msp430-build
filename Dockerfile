@@ -1,10 +1,11 @@
 FROM ubuntu:20.04
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    meson \
     wget \
     unzip \
+    git \
     build-essential \
+    meson \
     libusb-dev \
     libreadline-dev \
     libboost1.67 \
@@ -13,7 +14,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libudev-dev \
     libusb-1.0-0-dev \
     libncursesw5 \
-    git
+    ruby
 
 RUN wget -q -O toolchain.tar.bz2 http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/9_2_0_0/export/msp430-gcc-9.2.0.50_linux64.tar.bz2 && \
     tar xjf toolchain.tar.bz2 && \
