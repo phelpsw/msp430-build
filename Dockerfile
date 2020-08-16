@@ -1,5 +1,8 @@
 FROM ubuntu:20.04
 
+# Avoid warnings by switching to noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
+
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
 # will be updated to match your local UID/GID (when using the dockerFile property).
@@ -20,7 +23,7 @@ RUN apt-get update \
     # hidapi dependencies
     && apt-get -y install libudev1 libudev-dev libusb-1.0-0-dev  \
     # TI MSP debug stack tilib dependency
-    && DEBIAN_FRONTEND=noninteractive apt-get -y install pkg-config libboost1.67 \
+    && apt-get -y install pkg-config libboost1.67 \
     # Unity and CMock
     && apt-get -y install ruby \
     # Create a non-root user to use if preferred
@@ -68,5 +71,8 @@ RUN mkdir ti_msp_debug_stack && \
     cp /hidapi-hidapi-0.9.0/libusb/hid.o ThirdParty/lib64/hid-libusb.o && \
     make && \
     cp libmsp430.so /lib/x86_64-linux-gnu/
+
+# Switch back to dialog for any ad-hoc use of apt-get
+ENV DEBIAN_FRONTEND=dialog
 
 ENV PATH="/usr/local/msp430/bin:/usr/local/bin/:${PATH}"
