@@ -26,6 +26,8 @@ RUN apt-get update \
     && apt-get -y install pkg-config libboost1.67 \
     # Unity and CMock
     && apt-get -y install ruby \
+    # Valgrind for general debugging
+    && apt-get -y install valgrind \
     # Create a non-root user to use if preferred
     # see https://aka.ms/vscode-remote/containers/non-root-user.
     && groupadd --gid $USER_GID $USERNAME \
