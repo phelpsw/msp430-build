@@ -13,7 +13,7 @@ ARG USER_GID=$USER_UID
 
 RUN apt-get update \
     # Basic tools
-    && apt-get -y install wget unzip git \
+    && apt-get -y install wget unzip git curl \
     # Build system
     && apt-get -y install build-essential meson \
     # mspdebug dependencies
