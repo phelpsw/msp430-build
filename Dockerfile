@@ -32,6 +32,8 @@ RUN apt-get update \
     && apt-get -y install gcovr lcov \
     # cppcheck for static analysis
     && apt-get -y install cppcheck \
+    # clang-format for code formatting
+    && apt-get -y install clang-format \
     # Create a non-root user to use if preferred
     # see https://aka.ms/vscode-remote/containers/non-root-user.
     && groupadd --gid $USER_GID $USERNAME \
