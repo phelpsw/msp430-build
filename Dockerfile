@@ -30,6 +30,8 @@ RUN apt-get update \
     && apt-get -y install valgrind \
     # gcov and lcov for code coverage
     && apt-get -y install gcovr lcov \
+    # cppcheck for static analysis
+    && apt-get -y install cppcheck \
     # Create a non-root user to use if preferred
     # see https://aka.ms/vscode-remote/containers/non-root-user.
     && groupadd --gid $USER_GID $USERNAME \
